@@ -4,10 +4,16 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include <vector>
+
+#include "Sprite.h"
+
 
 namespace ApusCore {
 	class Renderer {
 	public:
+		std::vector<Sprite> sprites;
+
 		Renderer() {
 			if (!glfwInit())
 				throw std::exception("Error: initializing glfw");
@@ -17,9 +23,8 @@ namespace ApusCore {
 			gladLoadGL();
 		}
 
-		void Render() {
-			glClearColor(0.5f, 0.0f, 0.5f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT);
-		}
+		void Destroy();
+
+		void Render();
 	};
 }

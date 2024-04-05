@@ -15,8 +15,6 @@ namespace lm {
 
 	// Vector types
 	struct vec2 {
-	private:
-		float* ptr;
 	public:
 		float x, y;
 		vec2() {
@@ -61,10 +59,11 @@ namespace lm {
 			y--;
 			return *this;
 		}
-	};
-	struct vec3 {
+
 	private:
 		float* ptr;
+	};
+	struct vec3 {
 	public:
 		float x, y, z;
 		vec3() {
@@ -130,10 +129,11 @@ namespace lm {
 			z--;
 			return *this;
 		}
-	};
-	struct vec4 {
+
 	private:
 		float* ptr;
+	};
+	struct vec4 {
 	public:
 		float x, y, z, w;
 		vec4() {
@@ -220,6 +220,9 @@ namespace lm {
 			w--;
 			return *this;
 		}
+
+	private:
+		float* ptr;
 	};
 
 	// Vector math functions

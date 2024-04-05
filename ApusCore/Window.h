@@ -33,7 +33,7 @@ namespace ApusCore {
 		void SetFullscreen(bool newVal);
 		bool ToggleFullscreen();
 
-		bool ShouldClose();
+		int ShouldClose();
 		void Update();
 	};
 }

@@ -58,7 +58,7 @@ bool ApusCore::Window::ToggleFullscreen() {
 	return isFullScreen;
 }
 
-bool ApusCore::Window::ShouldClose() {
+int ApusCore::Window::ShouldClose() {
 	return glfwWindowShouldClose(window);
 }
 

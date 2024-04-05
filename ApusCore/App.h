@@ -1,6 +1,8 @@
 #pragma once
 #include "Window.h"
 #include "Renderer.h"
+#include "Sprite.h"
+
 
 namespace ApusCore {
 	class App {
@@ -18,5 +20,7 @@ namespace ApusCore {
 
 		void Start();
 		void Tick();
+
+		Sprite* CreateSprite(lm::vec4 tint = { 1, 1, 1, 1 }, lm::vec3 scale = { 1, 1, 1 }, lm::vec3 position = { 0, 0, 0 }, float rotation = 0, lm::vec2 tiling = { 1, 1 });
 	};
 }
