@@ -42,31 +42,93 @@ Vertex* ApusCore::Object::GetData() {
 	return &vertices[0];
 }
 
-ApusCore::Sprite::Sprite(lm::vec4 tint, lm::vec3 scale, lm::vec3 position, float rotation, lm::vec2 tiling) : 
-	Object(6), tintColor(tint), scale(scale), position(position), rotation(rotation), tiling(tiling) {
-	vertices.push_back({ {-0.5f,  0.5f, 0.0f}, {0, 1}, {1, 1, 1, 1} });
-	vertices.push_back({ { 0.5f,  0.5f, 0.0f}, {1, 1}, {1, 1, 1, 1} });
-	vertices.push_back({ { 0.5f, -0.5f, 0.0f}, {1, 0}, {0, 0, 0, 1} });
+ApusCore::Sprite::Sprite(lm::vec4 tint, lm::vec2 scale, lm::vec2 position, float rotation, lm::vec2 tiling) : 
+	Object(6), tintColor(tint), scale(scale), position(position), rotation(rotation), tiling(tiling), z(0) {
+	vertBase.push_back({ {-0.5f,  0.5f, 0.0f}, {0, 1}, {1, 1, 1, 1} });
+	vertBase.push_back({ { 0.5f,  0.5f, 0.0f}, {1, 1}, {1, 1, 1, 1} });
+	vertBase.push_back({ { 0.5f, -0.5f, 0.0f}, {1, 0}, {0, 0, 0, 1} });
 
-	vertices.push_back({ { 0.5f, -0.5f, 0.0f}, {1, 0}, {0, 0, 0, 1} });
-	vertices.push_back({ {-0.5f, -0.5f, 0.0f}, {0, 0}, {0, 0, 0, 1} });
-	vertices.push_back({ {-0.5f,  0.5f, 0.0f}, {0, 1}, {1, 1, 1, 1} });
+	vertBase.push_back({ { 0.5f, -0.5f, 0.0f}, {1, 0}, {0, 0, 0, 1} });
+	vertBase.push_back({ {-0.5f, -0.5f, 0.0f}, {0, 0}, {0, 0, 0, 1} });
+	vertBase.push_back({ {-0.5f,  0.5f, 0.0f}, {0, 1}, {1, 1, 1, 1} });
+
+	vertices = vertBase;
 	
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < vertices.size(); i++) {
 
 		vertices.at(i).pos *= scale;
 		vertices[i].uv *= tiling;
 		vertices[i].pos += position;
 		vertices[i].col *= tint;
 	}
-	
+}
+
+void ApusCore::Sprite::SetPosition(lm::vec2 newPos) {
+	lm::vec2 offset = newPos - position;
+	position = newPos;
+	for (int i = 0; i < vertices.size(); i++)
+		vertices[i].pos += offset;
+}
+
+void ApusCore::Sprite::SetRotation(float newRot) {
+	rotation = newRot;
+	lm::mat2 mat = lm::rotation2d(rotation);
+	for (int i = 0; i < vertices.size(); i++)
+		vertices[i].pos = mat * (vertices[i].pos - position) + position;
+}
+
+void ApusCore::Sprite::SetScale(lm::vec2 newScale) {
+	lm::vec2 offset = newScale / scale;
+	scale = newScale;
+	for (int i = 0; i < vertices.size(); i++)
+		vertices[i].pos = (vertices[i].pos - position) * offset + position;
+}
+
+lm::vec2 ApusCore::Sprite::GetPosition() {
+	return position;
+}
+
+float ApusCore::Sprite::GetRotation() {
+	return rotation;
+}
+
+lm::vec2 ApusCore::Sprite::GetScale() {
+	return scale;
+}
+
+lm::vec2 ApusCore::Sprite::Move(lm::vec2 offset) {
+	position += offset;
+	for (int i = 0; i < vertices.size(); i++)
+		vertices[i].pos += offset;
+	return position;
+}
+
+float ApusCore::Sprite::Rotate(float offset) {
+	rotation += offset;
+	std::cout << rotation << std::endl;
+	lm::mat2 mat = lm::rotation2d(rotation);
+	for (int i = 0; i < vertices.size(); i++) {
+		vertices[i].pos = mat * (vertices[i].pos - position) + position;
+	}
+	return rotation;
+}
+
+lm::vec2 ApusCore::Sprite::Scale(lm::vec2 offset) {
+	scale += offset;
+	for (int i = 0; i < vertices.size(); i++)
+		vertices[i].pos = (vertices[i].pos - position) * offset + position;
+	return scale;
 }
 
 void ApusCore::Sprite::SetZ(float zValue) {
-	position.z = zValue;
+	z = zValue;
 	for (int i = 0; i < 6; i++) {
 		vertices[i].pos.z = zValue;
 	}
+}
+
+float ApusCore::Sprite::GetZ() {
+	return z;
 }
 
 

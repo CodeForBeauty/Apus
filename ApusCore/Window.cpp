@@ -1,15 +1,18 @@
 #include <iostream>
 #include "Window.h"
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+
+#include <lm/lm.h>
 
 
 void ApusCore::Window::_windowInit() {
 	if (!glfwInit())
 		throw std::exception("Error: initializing glfw");
 
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	monitor = glfwGetPrimaryMonitor();
@@ -63,6 +66,16 @@ int ApusCore::Window::ShouldClose() {
 }
 
 void ApusCore::Window::Update() {
+	glfwGetWindowSize(window, &width, &height);
+	viewportWidth = width;
+	viewportHeight = height;
+	glViewport(0, 0, width, height);
+
 	glfwSwapBuffers(window);
 	glfwPollEvents();
+}
+
+void ApusCore::Window::UpdateProjection() {
+	lm::mat4 proj = lm::orthographic(viewportWidth / (float)viewportHeight, 1, 1.0f, -1.0f);
+	glUniformMatrix4fv(5, 1, GL_FALSE, &(proj.x.x));
 }

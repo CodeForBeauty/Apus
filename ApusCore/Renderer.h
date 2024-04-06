@@ -12,7 +12,7 @@
 namespace ApusCore {
 	class Renderer {
 	public:
-		std::vector<Sprite> sprites;
+		std::vector<Object> sprites;
 
 		Renderer() {
 			if (!glfwInit())

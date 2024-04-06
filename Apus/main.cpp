@@ -11,9 +11,11 @@ int main()
 {
     NewApp app = NewApp();
 
-    ApusCore::Sprite* sp = app.CreateSprite();
+    /*ApusCore::Sprite* sp = app.CreateSprite();
 
-    app.Start();
+    sp->Rotate(45);*/
+
+    app.Init();
 
     return 0;
 }

@@ -1,5 +1,7 @@
 #include <iostream>
+
 #include "Material.h"
+
 
 void ApusCore::Material::_Compile() {
 	program = glCreateProgram();

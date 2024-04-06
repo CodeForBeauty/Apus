@@ -35,5 +35,6 @@ namespace ApusCore {
 
 		int ShouldClose();
 		void Update();
+		void UpdateProjection();
 	};
 }

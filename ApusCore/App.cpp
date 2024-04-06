@@ -4,7 +4,9 @@
 
 
 
-void ApusCore::App::Start() {
+void ApusCore::App::Init() {
+	Start();
+
 	time = glfwGetTime();
 
 	while (!window.ShouldClose()) {
@@ -12,6 +14,7 @@ void ApusCore::App::Start() {
 		time = glfwGetTime();
 		delta = time - lastTime;
 		Tick();
+		window.UpdateProjection();
 		renderer.Render();
 		window.Update();
 	}
@@ -21,11 +24,15 @@ void ApusCore::App::Start() {
 	glfwTerminate();
 }
 
+void ApusCore::App::Start() {
+	std::cout << "App started" << std::endl;
+}
+
 void ApusCore::App::Tick() {
 	window.RenameWindow(std::to_string(1 / delta).c_str());
 }
 
-ApusCore::Sprite* ApusCore::App::CreateSprite(lm::vec4 tint, lm::vec3 scale, lm::vec3 position, float rotation, lm::vec2 tiling) {
-	renderer.sprites.push_back({ tint, scale, position, rotation, tiling });
-	return &renderer.sprites[renderer.sprites.size() - 1];
+ApusCore::Sprite* ApusCore::App::CreateSprite(lm::vec4 tint, lm::vec2 scale, lm::vec2 position, float rotation, lm::vec2 tiling) {
+	renderer.sprites.push_back(Sprite(tint, scale, position, rotation, tiling));
+	return (Sprite*) & renderer.sprites[renderer.sprites.size() - 1];
 }
