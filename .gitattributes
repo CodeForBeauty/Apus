@@ -62,4 +62,4 @@
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
 
-Dependencies/* linguist-detectable=false
+Dependencies/** linguist-detectable=false
