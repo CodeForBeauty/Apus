@@ -1,4 +1,6 @@
 #pragma once
+#include <lm/lm.h>
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
@@ -35,6 +37,6 @@ namespace ApusCore {
 
 		int ShouldClose();
 		void Update();
-		void UpdateProjection();
+		lm::mat4 GetProjection();
 	};
 }

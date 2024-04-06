@@ -28,8 +28,11 @@ void ApusCore::Object::Destroy() {
 	glDeleteBuffers(1, &vbo);
 }
 
-void ApusCore::Object::Draw() {
+void ApusCore::Object::Draw(lm::mat4 proj) {
 	material.Bind();
+
+	glUniformMatrix4fv(5, 1, GL_FALSE, &(proj.x.x));
+
 	glBindVertexArray(vao);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
@@ -71,8 +74,9 @@ void ApusCore::Sprite::SetPosition(lm::vec2 newPos) {
 }
 
 void ApusCore::Sprite::SetRotation(float newRot) {
+	float offset = newRot - rotation;
 	rotation = newRot;
-	lm::mat2 mat = lm::rotation2d(rotation);
+	lm::mat2 mat = lm::rotation2d(offset);
 	for (int i = 0; i < vertices.size(); i++)
 		vertices[i].pos = mat * (vertices[i].pos - position) + position;
 }
@@ -105,8 +109,7 @@ lm::vec2 ApusCore::Sprite::Move(lm::vec2 offset) {
 
 float ApusCore::Sprite::Rotate(float offset) {
 	rotation += offset;
-	std::cout << rotation << std::endl;
-	lm::mat2 mat = lm::rotation2d(rotation);
+	lm::mat2 mat = lm::rotation2d(offset);
 	for (int i = 0; i < vertices.size(); i++) {
 		vertices[i].pos = mat * (vertices[i].pos - position) + position;
 	}

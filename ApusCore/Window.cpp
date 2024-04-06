@@ -75,7 +75,9 @@ void ApusCore::Window::Update() {
 	glfwPollEvents();
 }
 
-void ApusCore::Window::UpdateProjection() {
-	lm::mat4 proj = lm::orthographic(viewportWidth / (float)viewportHeight, 1, 1.0f, -1.0f);
-	glUniformMatrix4fv(5, 1, GL_FALSE, &(proj.x.x));
+lm::mat4 ApusCore::Window::GetProjection()
+{
+	return lm::orthographic(viewportWidth / (float)viewportHeight, 1, 1.0f, -1.0f);
 }
+
+
