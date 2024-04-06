@@ -33,7 +33,7 @@ void ApusCore::Shader::RecompileShader()
 {
 	id = glCreateShader(type);
 	const char* src = text.c_str();
-	glShaderSource(id, 1, &src, nullptr);
+	glShaderSource(id, 1, &src, NULL);
 	glCompileShader(id);
 	
 	int result;

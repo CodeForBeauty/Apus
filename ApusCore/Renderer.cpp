@@ -13,7 +13,7 @@ void ApusCore::Renderer::Render() {
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	for (int i = 0; i < sprites.size(); i++) {
-		sprites[i].Bind();
+		sprites[i].Draw();
 		//sprites[i].Unbind();
 	}
 }
