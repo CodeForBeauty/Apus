@@ -1,25 +1,31 @@
 #pragma once
+#include <typeindex>
+#include <vector>
+
 #include <lm/lm.h>
+
 
 #include "Vertex.h"
 #include "Material.h"
 
 
 namespace ApusCore {
-	class Sprite {
+	class Object {
 	protected:
-		Vertex vertices[6] {
-			{{-0.5f, 0.5f, 0}, lm::vec2(0, 1)},
-			{{0.5f, 0.5f, 0}, lm::vec2(1, 1) },
-			{{0.5f, -0.5f, 0}, lm::vec2(1, 0) },
-
-			{{0.5f, -0.5f, 0}, lm::vec2(1, 0) },
-			{{-0.5f, -0.5f, 0}, lm::vec2(0, 0)},
-			{{-0.5f, 0.5f, 0}, lm::vec2(0, 1)},
-		};
-
-	public:
+		std::vector<Vertex> vertices;
 		unsigned int vbo, vao;
+	public:
+		Material material = {};
+
+		Object(size_t vertCount);
+
+		void Destroy();
+		void Draw();
+		Vertex* GetData();
+	};
+
+	class Sprite : public Object {
+	public:
 		lm::vec4 tintColor;
 		lm::vec3 scale;
 		lm::vec3 position;
@@ -27,16 +33,10 @@ namespace ApusCore {
 
 		lm::vec2 tiling;
 
-		Material material = {};
-
 
 		Sprite(lm::vec4 tint = { 1, 1, 1, 1 }, lm::vec3 scale = { 1, 1, 1 }, lm::vec3 position = { 0, 0, 0 }, float rotation = 0, lm::vec2 tiling = { 1, 1 });
 
-		void Destroy();
 
-		Vertex* GetData();
 		void SetZ(float zValue);
-
-		void Draw();
 	};
 }

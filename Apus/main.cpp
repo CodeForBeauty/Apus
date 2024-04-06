@@ -9,7 +9,7 @@
 
 int main() 
 {
-    ApusCore::App app = NewApp();
+    NewApp app = NewApp();
 
     ApusCore::Sprite* sp = app.CreateSprite();
 
