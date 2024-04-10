@@ -4,7 +4,7 @@
 
 void ApusCore::Renderer::Destroy() {
 	for (int i = 0; i < sprites.size(); i++) {
-		sprites[i].Destroy();
+		sprites[i]->Destroy();
 	}
 }
 
@@ -13,7 +13,7 @@ void ApusCore::Renderer::Render(lm::mat4 proj) {
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	for (int i = 0; i < sprites.size(); i++) {
-		sprites[i].Draw(proj);
+		sprites[i]->Draw(proj);
 		//sprites[i].Unbind();
 	}
 }

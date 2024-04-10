@@ -16,6 +16,9 @@
     <Filter Include="Resource Files\shaders">
       <UniqueIdentifier>{452443a9-9ab2-4f8a-a272-99007ff11db5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\vendor">
+      <UniqueIdentifier>{a1a4216c-cede-4894-a0a3-9746c5e26d8a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -47,9 +50,6 @@
     <ClCompile Include="App.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="glad.c">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
     <ClCompile Include="Sprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -61,6 +61,12 @@
     </ClCompile>
     <ClCompile Include="Material.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="glad.c">
+      <Filter>Resource Files\vendor</Filter>
+    </ClCompile>
+    <ClCompile Include="stb_image.cpp">
+      <Filter>Resource Files\vendor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

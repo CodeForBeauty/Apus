@@ -23,6 +23,6 @@ namespace ApusCore {
 		virtual void Start();
 		virtual void Tick();
 
-		Sprite* CreateSprite(lm::vec4 tint = { 1, 1, 1, 1 }, lm::vec2 scale = { 1, 1 }, lm::vec2 position = { 0, 0 }, float rotation = 0, lm::vec2 tiling = { 1, 1 });
+		void AddSprite(Sprite* newSprite);
 	};
 }

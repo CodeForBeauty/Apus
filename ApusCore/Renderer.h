@@ -4,7 +4,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include <vector>
+#include <list>
 
 #include "Sprite.h"
 
@@ -12,7 +12,7 @@
 namespace ApusCore {
 	class Renderer {
 	public:
-		std::vector<Object> sprites;
+		std::vector<Object*> sprites;
 
 		Renderer() {
 			if (!glfwInit())

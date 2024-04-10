@@ -31,8 +31,6 @@ void ApusCore::App::Tick() {
 	window.RenameWindow(std::to_string(1 / delta).c_str());
 }
 
-ApusCore::Sprite* ApusCore::App::CreateSprite(lm::vec4 tint, lm::vec2 scale, lm::vec2 position, float rotation, lm::vec2 tiling) {
-	renderer.sprites.push_back(Sprite(tint, scale, position, rotation, tiling));
-	Object* obj = &renderer.sprites.back();
-	return (Sprite*)obj;
+void ApusCore::App::AddSprite(Sprite* newSprite) {
+	renderer.sprites.push_back(newSprite);
 }
