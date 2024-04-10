@@ -184,6 +184,7 @@
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
@@ -195,11 +196,15 @@
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="stb_image.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Apus\shaders\fragment.frag" />
     <None Include="..\Apus\shaders\vertex.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Apus\shaders\Default.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

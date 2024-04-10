@@ -7,5 +7,4 @@ struct Vertex {
 	lm::vec3 pos;
 	lm::vec2 uv;
 	lm::vec4 col;
-	unsigned int tex;
 };

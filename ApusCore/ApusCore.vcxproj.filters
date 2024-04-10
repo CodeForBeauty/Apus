@@ -42,6 +42,9 @@
     <ClInclude Include="Material.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -68,6 +71,9 @@
     <ClCompile Include="stb_image.cpp">
       <Filter>Resource Files\vendor</Filter>
     </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Apus\shaders\fragment.frag">
@@ -76,5 +82,10 @@
     <None Include="..\Apus\shaders\vertex.vert">
       <Filter>Resource Files\shaders</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Apus\shaders\Default.jpg">
+      <Filter>Resource Files\shaders</Filter>
+    </Image>
   </ItemGroup>
 </Project>

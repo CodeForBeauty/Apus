@@ -13,9 +13,12 @@ void ApusCore::Material::_Compile() {
 }
 
 void ApusCore::Material::Bind() {
+	tex.Bind();
 	glUseProgram(program);
 }
 
 void ApusCore::Material::Destroy() {
+	vs.Destroy();
+	fs.Destroy();
 	glDeleteProgram(program);
 }
