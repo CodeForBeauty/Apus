@@ -2,6 +2,9 @@
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
 * text=auto
+Dependecies/** linguist-detectable=false
+Apus/glad.c linguist-detectable=false
+ApusCore/glad.c linguist-detectable=false
 
 ###############################################################################
 # Set default behavior for command prompt diff.
