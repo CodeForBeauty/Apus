@@ -22,6 +22,7 @@ namespace ApusCore {
 
 		virtual void Start();
 		virtual void Tick();
+		virtual void End();
 
 		void AddSprite(Sprite* newSprite);
 	};

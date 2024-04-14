@@ -20,5 +20,10 @@ void ApusCore::Material::Bind() {
 void ApusCore::Material::Destroy() {
 	vs.Destroy();
 	fs.Destroy();
+	tex.Clear();
 	glDeleteProgram(program);
+}
+
+void ApusCore::Material::LoadTexture(const char* path) {
+	tex.LoadTexture(path);
 }

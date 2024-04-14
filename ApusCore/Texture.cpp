@@ -1,4 +1,5 @@
 #include "Texture.h"
+#include <iostream>
 
 ApusCore::Texture::Texture(const char* path) : path(path) {
 	data = stbi_load(path, &width, &height, &channels, 0);
@@ -18,6 +19,10 @@ ApusCore::Texture::Texture(const char* path) : path(path) {
 }
 
 void ApusCore::Texture::LoadTexture(const char* texturePath) {
+	//std::cout << texturePath << std::endl;
+	if (strcmp(path.c_str(), texturePath) == 0)
+		return;
+	//std::cout << texturePath << "1" << std::endl;
 	Clear();
 	path = texturePath;
 	data = stbi_load(texturePath, &width, &height, &channels, 0);

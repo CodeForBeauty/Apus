@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Resource Files\shaders">
-      <UniqueIdentifier>{452443a9-9ab2-4f8a-a272-99007ff11db5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource Files\vendor">
       <UniqueIdentifier>{a1a4216c-cede-4894-a0a3-9746c5e26d8a}</UniqueIdentifier>
     </Filter>
@@ -74,18 +71,5 @@
     <ClCompile Include="Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Apus\shaders\fragment.frag">
-      <Filter>Resource Files\shaders</Filter>
-    </None>
-    <None Include="..\Apus\shaders\vertex.vert">
-      <Filter>Resource Files\shaders</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\Apus\shaders\Default.jpg">
-      <Filter>Resource Files\shaders</Filter>
-    </Image>
   </ItemGroup>
 </Project>

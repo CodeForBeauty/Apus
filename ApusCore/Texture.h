@@ -10,19 +10,16 @@ namespace ApusCore {
 	private:
 		std::string path;
 		unsigned int id;
-		unsigned char* data;
 	public:
+		unsigned char* data;
 		int width, height, channels;
 
 		Texture(const char* path);
 
-		~Texture() {
-			Clear();
-		}
-
 		void LoadTexture(const char* texturePath);
 
 		void Clear() {
+			glClearTexImage(id, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 			stbi_image_free(data);
 		}
 

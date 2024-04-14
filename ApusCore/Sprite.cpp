@@ -45,7 +45,7 @@ Vertex* ApusCore::Object::GetData() {
 	return &vertices[0];
 }
 
-ApusCore::Sprite::Sprite(lm::vec4 tint, lm::vec2 scale, lm::vec2 position, float rotation, lm::vec2 tiling) : 
+ApusCore::Sprite::Sprite(lm::vec4 tint, lm::vec2 scale, lm::vec2 position, float rotation, lm::vec2 tiling, const char* texPath) : 
 	Object(6), tintColor(tint), scale(scale), position(position), rotation(rotation), tiling(tiling), z(0) {
 	vertBase.push_back({ {-0.5f,  0.5f, 0.0f}, {0, 1}, {1, 1, 1, 1} });
 	vertBase.push_back({ { 0.5f,  0.5f, 0.0f}, {1, 1}, {1, 1, 1, 1} });
@@ -58,12 +58,13 @@ ApusCore::Sprite::Sprite(lm::vec4 tint, lm::vec2 scale, lm::vec2 position, float
 	vertices = vertBase;
 	
 	for (int i = 0; i < vertices.size(); i++) {
-
 		vertices.at(i).pos *= scale;
 		vertices[i].uv *= tiling;
 		vertices[i].pos += position;
 		vertices[i].col *= tint;
 	}
+
+	material.LoadTexture(texPath);
 }
 
 void ApusCore::Sprite::SetPosition(lm::vec2 newPos) {
@@ -132,6 +133,10 @@ void ApusCore::Sprite::SetZ(float zValue) {
 
 float ApusCore::Sprite::GetZ() {
 	return z;
+}
+
+void ApusCore::Sprite::LoadTexture(const char* path) {
+	material.LoadTexture(path);
 }
 
 

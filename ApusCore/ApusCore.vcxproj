@@ -92,7 +92,8 @@
       <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>xcopy /I /s /y "$(SolutionDir)Apus/shaders" "$(OutDir)shaders"</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -121,7 +122,8 @@
       <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>xcopy /I /s /y "$(SolutionDir)Apus/shaders" "$(OutDir)shaders"</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -146,7 +148,8 @@
       <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>xcopy /I /s /y "$(SolutionDir)Apus/shaders" "$(OutDir)shaders"</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -175,7 +178,8 @@
       <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>xcopy /I /s /y "$(SolutionDir)Apus/shaders" "$(OutDir)shaders"</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -198,13 +202,6 @@
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Window.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Apus\shaders\fragment.frag" />
-    <None Include="..\Apus\shaders\vertex.vert" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\Apus\shaders\Default.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

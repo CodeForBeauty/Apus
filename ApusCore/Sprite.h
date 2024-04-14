@@ -37,7 +37,7 @@ namespace ApusCore {
 		float z;
 
 	public:
-		Sprite(lm::vec4 tint = { 1, 1, 1, 1 }, lm::vec2 scale = { 1, 1 }, lm::vec2 position = { 0, 0 }, float rotation = 0, lm::vec2 tiling = { 1, 1 });
+		Sprite(lm::vec4 tint = { 1, 1, 1, 1 }, lm::vec2 scale = { 1, 1 }, lm::vec2 position = { 0, 0 }, float rotation = 0, lm::vec2 tiling = { 1, 1 }, const char* texturePath = "shaders/Default.jpg");
 
 
 		void SetPosition(lm::vec2 newPos);
@@ -55,5 +55,8 @@ namespace ApusCore {
 
 		void SetZ(float zValue);
 		float GetZ();
+
+
+		void LoadTexture(const char* path);
 	};
 }

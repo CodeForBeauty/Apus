@@ -15,6 +15,8 @@ public:
 		sp = ApusCore::Sprite();
 		sp1 = ApusCore::Sprite();
 
+		sp.LoadTexture("testing/grass.jpg");
+
 		sp1.SetRotation(-25);
 		sp1.SetPosition({ 0.1, 0 });
 
@@ -30,5 +32,9 @@ public:
 		sp.SetPosition({ std::sin((float)time), pos.y });
 		sp1.Rotate(20 * delta);
 		App::Tick();
+	}
+
+	void End() override {
+		App::End();
 	}
 };

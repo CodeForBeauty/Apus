@@ -18,6 +18,8 @@ void ApusCore::App::Init() {
 		window.Update();
 	}
 
+	End();
+
 	renderer.Destroy();
 	window.Destroy();
 	glfwTerminate();
@@ -29,6 +31,10 @@ void ApusCore::App::Start() {
 
 void ApusCore::App::Tick() {
 	window.RenameWindow(std::to_string(1 / delta).c_str());
+}
+
+void ApusCore::App::End() {
+	std::cout << "App closed" << std::endl;
 }
 
 void ApusCore::App::AddSprite(Sprite* newSprite) {
