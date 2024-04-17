@@ -2,7 +2,7 @@
 #include "Window.h"
 #include "Renderer.h"
 #include "Sprite.h"
-
+#include "Camera.h"
 
 namespace ApusCore {
 	class App {
@@ -11,10 +11,11 @@ namespace ApusCore {
 	protected:
 		Window window;
 		Renderer renderer;
+		Camera camera;
 	public:
 		double time = 0, delta = 0;
 
-		App() : renderer(Renderer()), window(Window()){
+		App() : renderer(Renderer()), window(Window()), camera(Camera(lm::vec2(), 0)) {
 			renderer.Init();
 		}
 

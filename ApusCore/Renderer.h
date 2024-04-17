@@ -25,6 +25,6 @@ namespace ApusCore {
 
 		void Destroy();
 
-		void Render(lm::mat4 proj);
+		void Render(lm::mat4 proj, lm::mat4 cam);
 	};
 }

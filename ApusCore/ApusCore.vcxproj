@@ -92,8 +92,7 @@
       <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>xcopy /I /s /y "$(SolutionDir)ApusCore/shaders" "$(OutDir)shaders"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -122,8 +121,7 @@
       <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>xcopy /I /s /y "$(SolutionDir)ApusCore/shaders" "$(OutDir)shaders"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -148,8 +146,7 @@
       <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>xcopy /I /s /y "$(SolutionDir)ApusCore/shaders" "$(OutDir)shaders"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -178,12 +175,12 @@
       <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>xcopy /I /s /y "$(SolutionDir)ApusCore/shaders" "$(OutDir)shaders"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Shader.h" />
@@ -194,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Renderer.cpp" />
@@ -202,6 +200,13 @@
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="shaders\Default.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\fragment.frag" />
+    <None Include="shaders\vertex.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

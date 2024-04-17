@@ -14,7 +14,7 @@ void ApusCore::App::Init() {
 		time = glfwGetTime();
 		delta = time - lastTime;
 		Tick();
-		renderer.Render(window.GetProjection());
+		renderer.Render(window.GetProjection(), camera.GetMatrix());
 		window.Update();
 	}
 

@@ -20,7 +20,7 @@ namespace ApusCore {
 		Object(size_t vertCount);
 
 		void Destroy();
-		void Draw(lm::mat4 proj);
+		void Draw(lm::mat4 proj, lm::mat4 cam);
 		Vertex* GetData();
 	};
 

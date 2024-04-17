@@ -103,8 +103,8 @@
       <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /I /s /y "$(SolutionDir)Apus/shaders" "$(OutDir)shaders"
-xcopy /I /s /y "$(SolutionDir)Apus/testing" "$(OutDir)testing"</Command>
+      <Command>xcopy /I /s /y "$(SolutionDir)Apus/testing" "$(OutDir)testing"
+xcopy /I /s /y "$(SolutionDir)ApusCore/shaders" "$(SolutionDir)Apus/shaders"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -127,8 +127,8 @@ xcopy /I /s /y "$(SolutionDir)Apus/testing" "$(OutDir)testing"</Command>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /I /s /y "$(SolutionDir)Apus/shaders" "$(OutDir)shaders"
-xcopy /I /s /y "$(SolutionDir)Apus/testing" "$(OutDir)testing"</Command>
+      <Command>xcopy /I /s /y "$(SolutionDir)Apus/testing" "$(OutDir)testing"
+xcopy /I /s /y "$(SolutionDir)ApusCore/shaders" "$(SolutionDir)Apus/shaders"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -147,8 +147,8 @@ xcopy /I /s /y "$(SolutionDir)Apus/testing" "$(OutDir)testing"</Command>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /I /s /y "$(SolutionDir)Apus/shaders" "$(OutDir)shaders"
-xcopy /I /s /y "$(SolutionDir)Apus/testing" "$(OutDir)testing"</Command>
+      <Command>xcopy /I /s /y "$(SolutionDir)Apus/testing" "$(OutDir)testing"
+xcopy /I /s /y "$(SolutionDir)ApusCore/shaders" "$(SolutionDir)Apus/shaders"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -171,8 +171,8 @@ xcopy /I /s /y "$(SolutionDir)Apus/testing" "$(OutDir)testing"</Command>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /I /s /y "$(SolutionDir)Apus/shaders" "$(OutDir)shaders"
-xcopy /I /s /y "$(SolutionDir)Apus/testing" "$(OutDir)testing"</Command>
+      <Command>xcopy /I /s /y "$(SolutionDir)Apus/testing" "$(OutDir)testing"
+xcopy /I /s /y "$(SolutionDir)ApusCore/shaders" "$(SolutionDir)Apus/shaders"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -188,12 +188,7 @@ xcopy /I /s /y "$(SolutionDir)Apus/testing" "$(OutDir)testing"</Command>
     <ClInclude Include="NewApp.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="shaders\Default.jpg" />
     <Image Include="Testing\grass.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="shaders\fragment.frag" />
-    <None Include="shaders\vertex.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

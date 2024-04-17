@@ -19,9 +19,6 @@
     <Filter Include="Resource Files\testing">
       <UniqueIdentifier>{9b6fe827-6ec9-47a6-a7ef-aa3aef13520e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\shaders">
-      <UniqueIdentifier>{6eb80e26-108a-4814-a496-4a06de8f79aa}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -40,16 +37,5 @@
     <Image Include="Testing\grass.jpg">
       <Filter>Resource Files\testing</Filter>
     </Image>
-    <Image Include="shaders\Default.jpg">
-      <Filter>Resource Files\shaders</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="shaders\fragment.frag">
-      <Filter>Resource Files\shaders</Filter>
-    </None>
-    <None Include="shaders\vertex.vert">
-      <Filter>Resource Files\shaders</Filter>
-    </None>
   </ItemGroup>
 </Project>

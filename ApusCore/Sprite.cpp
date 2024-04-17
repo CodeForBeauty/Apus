@@ -28,10 +28,12 @@ void ApusCore::Object::Destroy() {
 	glDeleteBuffers(1, &vbo);
 }
 
-void ApusCore::Object::Draw(lm::mat4 proj) {
+void ApusCore::Object::Draw(lm::mat4 proj, lm::mat4 cam) {
 	material.Bind();
 
 	glUniformMatrix4fv(5, 1, GL_FALSE, &(proj.x.x));
+	glUniformMatrix4fv(6, 1, GL_FALSE, &(cam.x.x));
+	//std::cout << std::hex << glGetError() << std::endl;
 
 	glBindVertexArray(vao);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);

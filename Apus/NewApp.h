@@ -17,8 +17,8 @@ public:
 
 		sp.LoadTexture("testing/grass.jpg");
 
-		sp1.SetRotation(-25);
-		sp1.SetPosition({ 0.1, 0 });
+		//sp1.SetRotation(-25);
+		//sp1.SetPosition({ 0.1, 0 });
 
 		AddSprite(&sp);
 		AddSprite(&sp1);
@@ -31,6 +31,8 @@ public:
 		lm::vec2 pos = sp.GetPosition();
 		sp.SetPosition({ std::sin((float)time), pos.y });
 		sp1.Rotate(20 * delta);
+		//camera.Rotate(20 * delta);
+		camera.Move(lm::vec2(0.1 * delta, 0));
 		App::Tick();
 	}
 

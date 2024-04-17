@@ -340,6 +340,7 @@ namespace lm {
 			x = value.x;
 			y = value.y;
 			z = value.z;
+			w = value.w;
 			return *this;
 		}
 		mat4& operator=(const mat2& value) {

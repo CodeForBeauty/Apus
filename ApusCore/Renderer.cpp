@@ -8,12 +8,12 @@ void ApusCore::Renderer::Destroy() {
 	}
 }
 
-void ApusCore::Renderer::Render(lm::mat4 proj) {
+void ApusCore::Renderer::Render(lm::mat4 proj, lm::mat4 cam) {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	for (int i = 0; i < sprites.size(); i++) {
-		sprites[i]->Draw(proj);
+		sprites[i]->Draw(proj, cam);
 		//sprites[i].Unbind();
 	}
 }
