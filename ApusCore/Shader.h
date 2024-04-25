@@ -13,6 +13,7 @@ namespace ApusCore {
 	public:
 		unsigned int id;
 		Shader(std::string filepath, unsigned int shaderType) : type(shaderType) {
+			gladLoadGL();
 			LoadFromFile(filepath);
 			RecompileShader();
 		}

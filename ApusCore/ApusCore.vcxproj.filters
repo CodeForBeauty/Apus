@@ -93,5 +93,11 @@
     <None Include="shaders\fragment.frag">
       <Filter>Resource Files\shaders</Filter>
     </None>
+    <None Include="shaders\postprocessing.frag">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
+    <None Include="shaders\postprocessing.vert">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

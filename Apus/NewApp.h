@@ -23,6 +23,7 @@ public:
 		AddSprite(&sp);
 		AddSprite(&sp1);
 
+		window.ResizeViewport(800, 650);
 		//std::cout << std::hex << glGetError() << std::endl;
 	}
 
@@ -32,7 +33,7 @@ public:
 		sp.SetPosition({ std::sin((float)time), pos.y });
 		sp1.Rotate(20 * delta);
 		//camera.Rotate(20 * delta);
-		camera.Move(lm::vec2(0.1 * delta, 0));
+		//camera.Move(lm::vec2(0.1 * delta, 0));
 		App::Tick();
 	}
 

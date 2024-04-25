@@ -31,14 +31,13 @@ void ApusCore::Window::_windowInit() {
 void ApusCore::Window::ResizeViewport(int newWidth, int newHeight) {
 	viewportWidth = newWidth;
 	viewportHeight = newHeight;
-	glViewport(0, 0, newWidth, newHeight);
+	viewportSet = true;
 }
 
 void ApusCore::Window::UpdateViewport() {
 	glfwGetWindowSize(window, &width, &height);
 	viewportWidth = width;
 	viewportHeight = height;
-	glViewport(0, 0, width, height);
 }
 
 void ApusCore::Window::RenameWindow(const char* newTitle) {
@@ -67,17 +66,23 @@ int ApusCore::Window::ShouldClose() {
 
 void ApusCore::Window::Update() {
 	glfwGetWindowSize(window, &width, &height);
-	viewportWidth = width;
-	viewportHeight = height;
-	glViewport(0, 0, width, height);
+	if (!viewportSet) {
+		viewportWidth = width;
+		viewportHeight = height;
+	}
+	glViewport(0, 0, viewportWidth, viewportHeight);
+
 
 	glfwSwapBuffers(window);
 	glfwPollEvents();
 }
 
-lm::mat4 ApusCore::Window::GetProjection()
-{
+lm::mat4 ApusCore::Window::GetProjection() {
 	return lm::orthographic(viewportWidth / (float)viewportHeight, 1, 1.0f, -1.0f);
+}
+
+void ApusCore::Window::AutoResize(bool newVal) {
+	viewportSet = !newVal;
 }
 
 

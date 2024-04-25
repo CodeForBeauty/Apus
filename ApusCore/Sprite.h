@@ -10,21 +10,21 @@
 
 
 namespace ApusCore {
-	class Object {
+	class Mesh {
 	protected:
 		std::vector<Vertex> vertices;
 		unsigned int vbo, vao;
 	public:
 		Material material = {};
 
-		Object(size_t vertCount);
+		Mesh(size_t vertCount);
 
 		void Destroy();
 		void Draw(lm::mat4 proj, lm::mat4 cam);
 		Vertex* GetData();
 	};
 
-	class Sprite : public Object {
+	class Sprite : public Mesh {
 	protected:
 		std::vector<Vertex> vertBase;
 		

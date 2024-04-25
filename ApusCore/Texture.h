@@ -4,6 +4,7 @@
 #include <string>
 #include <stb/stb_image.h>
 
+#include <iostream>
 
 namespace ApusCore {
 	class Texture {
@@ -24,6 +25,7 @@ namespace ApusCore {
 		}
 
 		void Bind() {
+			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, id);
 		}
 

@@ -12,7 +12,8 @@
 namespace ApusCore {
 	class Renderer {
 	public:
-		std::vector<Object*> sprites;
+		lm::vec4 background = { 0, 0, 0, 1 };
+		std::vector<Mesh*> sprites;
 
 		Renderer() {
 			if (!glfwInit())
@@ -26,5 +27,7 @@ namespace ApusCore {
 		void Destroy();
 
 		void Render(lm::mat4 proj, lm::mat4 cam);
+
+		void SetBackground(float x, float y, float z, float w);
 	};
 }

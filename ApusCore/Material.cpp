@@ -14,7 +14,10 @@ void ApusCore::Material::_Compile() {
 
 void ApusCore::Material::Bind() {
 	tex.Bind();
+
+	//std::cout << std::hex << glGetError() << std::endl;
 	glUseProgram(program);
+
 }
 
 void ApusCore::Material::Destroy() {

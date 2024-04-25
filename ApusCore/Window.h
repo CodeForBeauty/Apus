@@ -10,6 +10,7 @@ namespace ApusCore {
 	private:
 		GLFWmonitor* monitor;
 		GLFWwindow* window;
+		bool viewportSet;
 	public:
 		int width, height, viewportWidth, viewportHeight;
 		bool isFullScreen = false;
@@ -38,5 +39,7 @@ namespace ApusCore {
 		int ShouldClose();
 		void Update();
 		lm::mat4 GetProjection();
+
+		void AutoResize(bool newVal);
 	};
 }

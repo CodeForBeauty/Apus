@@ -1,7 +1,7 @@
 #include "Sprite.h"
 
 
-ApusCore::Object::Object(size_t vertCount) {
+ApusCore::Mesh::Mesh(size_t vertCount) {
 	glGenVertexArrays(1, &vao);
 	glGenBuffers(1, &vbo);
 
@@ -22,13 +22,13 @@ ApusCore::Object::Object(size_t vertCount) {
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void ApusCore::Object::Destroy() {
+void ApusCore::Mesh::Destroy() {
 	material.Destroy();
 	glDeleteVertexArrays(1, &vao);
 	glDeleteBuffers(1, &vbo);
 }
 
-void ApusCore::Object::Draw(lm::mat4 proj, lm::mat4 cam) {
+void ApusCore::Mesh::Draw(lm::mat4 proj, lm::mat4 cam) {
 	material.Bind();
 
 	glUniformMatrix4fv(5, 1, GL_FALSE, proj);
@@ -43,12 +43,12 @@ void ApusCore::Object::Draw(lm::mat4 proj, lm::mat4 cam) {
 	glDrawArrays(GL_TRIANGLES, 0, vertices.size());
 }
 
-Vertex* ApusCore::Object::GetData() {
+Vertex* ApusCore::Mesh::GetData() {
 	return &vertices[0];
 }
 
 ApusCore::Sprite::Sprite(lm::vec4 tint, lm::vec2 scale, lm::vec2 position, float rotation, lm::vec2 tiling, const char* texPath) : 
-	Object(6), tintColor(tint), scale(scale), position(position), rotation(rotation), tiling(tiling), z(0) {
+	Mesh(6), tintColor(tint), scale(scale), position(position), rotation(rotation), tiling(tiling), z(0) {
 	vertBase.push_back({ {-0.5f,  0.5f, 0.0f}, {0, 1}, {1, 1, 1, 1} });
 	vertBase.push_back({ { 0.5f,  0.5f, 0.0f}, {1, 1}, {1, 1, 1, 1} });
 	vertBase.push_back({ { 0.5f, -0.5f, 0.0f}, {1, 0}, {0, 0, 0, 1} });
