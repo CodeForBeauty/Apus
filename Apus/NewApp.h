@@ -37,6 +37,10 @@ public:
 		App::Tick();
 	}
 
+	void LateTick() override {
+		renderer.SaveRender("testing/output.png", ApusCore::ImageType::png);
+	}
+
 	void End() override {
 		App::End();
 	}

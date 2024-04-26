@@ -18,6 +18,7 @@ void ApusCore::App::Init() {
 		renderer.Render(window.GetProjection(), camera.GetMatrix());
 		camera.Render(window.width, window.height);
 		window.Update();
+		LateTick();
 	}
 
 	End();
@@ -33,6 +34,10 @@ void ApusCore::App::Start() {
 
 void ApusCore::App::Tick() {
 	window.RenameWindow(std::to_string(1 / delta).c_str());
+}
+
+void ApusCore::App::LateTick() {
+	std::cout << "LateTick" << std::endl;
 }
 
 void ApusCore::App::End() {

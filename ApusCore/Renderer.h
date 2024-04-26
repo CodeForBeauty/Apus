@@ -7,15 +7,21 @@
 #include <list>
 
 #include "Sprite.h"
+#include "Window.h"
 
 
 namespace ApusCore {
+	enum ImageType {
+		png, jpeg, bmp, tga
+	};
 	class Renderer {
+	private:
+		Window* window;
 	public:
 		lm::vec4 background = { 0, 0, 0, 1 };
 		std::vector<Mesh*> sprites;
 
-		Renderer() {
+		Renderer(Window* window) : window(window) {
 			if (!glfwInit())
 				throw std::exception("Error: initializing glfw");
 		}
@@ -29,5 +35,7 @@ namespace ApusCore {
 		void Render(lm::mat4 proj, lm::mat4 cam);
 
 		void SetBackground(float x, float y, float z, float w);
+
+		void SaveRender(const char* outputPath, ImageType imgType);
 	};
 }

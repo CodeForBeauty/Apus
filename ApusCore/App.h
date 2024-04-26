@@ -15,7 +15,7 @@ namespace ApusCore {
 	public:
 		double time = 0, delta = 0;
 
-		App() : renderer(Renderer()), window(Window()), camera(Camera(lm::vec2(), 0)) {
+		App() : window(Window()), renderer(Renderer(&window)), camera(Camera(lm::vec2(), 0)) {
 			renderer.Init();
 		}
 
@@ -23,6 +23,7 @@ namespace ApusCore {
 
 		virtual void Start();
 		virtual void Tick();
+		virtual void LateTick();
 		virtual void End();
 
 		void AddSprite(Sprite* newSprite);
