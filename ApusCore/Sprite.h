@@ -58,5 +58,7 @@ namespace ApusCore {
 
 
 		void LoadTexture(const char* path);
+
+		void GenerateTexture(unsigned char* (*func)(lm::vec2 pos, lm::vec2 uv), int width, int height);
 	};
 }

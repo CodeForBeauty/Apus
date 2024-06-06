@@ -141,4 +141,10 @@ void ApusCore::Sprite::LoadTexture(const char* path) {
 	material.LoadTexture(path);
 }
 
+void ApusCore::Sprite::GenerateTexture(unsigned char* (*func)(lm::vec2 pos, lm::vec2 uv), int width, int height) {
+	material.tex.width = width;
+	material.tex.height = height;
+	material.tex.Generate(func);
+}
+
 

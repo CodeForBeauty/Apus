@@ -6,6 +6,9 @@
 
 #include <iostream>
 
+#include "lm/lm.h"
+
+
 namespace ApusCore {
 	class Texture {
 	private:
@@ -16,6 +19,7 @@ namespace ApusCore {
 		int width, height, channels;
 
 		Texture(const char* path);
+		Texture(unsigned char* (*func)(lm::vec2 pos, lm::vec2 uv), int width, int height);
 
 		void LoadTexture(const char* texturePath);
 
@@ -32,5 +36,7 @@ namespace ApusCore {
 		void Unbind() {
 			glBindTexture(GL_TEXTURE_2D, 0);
 		}
+
+		void Generate(unsigned char* (*func)(lm::vec2 pos, lm::vec2 uv));
 	};
 }

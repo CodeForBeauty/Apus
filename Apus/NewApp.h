@@ -15,6 +15,15 @@ public:
 		sp = ApusCore::Sprite();
 		sp1 = ApusCore::Sprite();
 
+		
+		auto test = [](lm::vec2 pos, lm::vec2 uv) {
+			unsigned char output[3] {uv.x * 255, uv.y * 255, 0};
+			//std::cout << (float)output[0] << " " << (float)output[1] << " " << (float)output[2] << " " << std::endl;
+			return output;
+		};
+
+		sp1.GenerateTexture(test, 256, 256);
+
 		sp.LoadTexture("testing/grass.jpg");
 
 		//sp1.SetRotation(-25);
@@ -38,7 +47,7 @@ public:
 	}
 
 	void LateTick() override {
-		renderer.SaveRender("testing/output.png", ApusCore::ImageType::png);
+		//renderer.SaveRender("testing/output.png", ApusCore::ImageType::png);
 	}
 
 	void End() override {
