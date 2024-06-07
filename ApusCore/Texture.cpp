@@ -1,6 +1,9 @@
 #include "Texture.h"
 #include <iostream>
 
+#include <stb/stb_image_write.h>
+
+
 ApusCore::Texture::Texture(const char* path) : path(path) {
 	data = stbi_load(path, &width, &height, &channels, 0);
 
@@ -73,4 +76,21 @@ void ApusCore::Texture::Generate(unsigned char*(*func)(lm::vec2 pos, lm::vec2 uv
 	glGenerateMipmap(GL_TEXTURE_2D);
 
 	Unbind();
+}
+
+void ApusCore::Texture::Save(const char* outputPath, ApusCore::ImageType imgType) {
+	switch (imgType) {
+	case ApusCore::png:
+		stbi_write_png(outputPath, width, height, 3, data, width * 3);
+		break;
+	case ApusCore::jpeg:
+		stbi_write_jpg(outputPath, width, height, 3, data, width * 3);
+		break;
+	case ApusCore::bmp:
+		stbi_write_bmp(outputPath, width, height, 3, data);
+		break;
+	case ApusCore::tga:
+		stbi_write_tga(outputPath, width, height, 3, data);
+		break;
+	}
 }

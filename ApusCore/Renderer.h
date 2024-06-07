@@ -8,12 +8,10 @@
 
 #include "Sprite.h"
 #include "Window.h"
+#include "Types.h"
 
 
 namespace ApusCore {
-	enum ImageType {
-		png, jpeg, bmp, tga
-	};
 	class Renderer {
 	private:
 		Window* window;

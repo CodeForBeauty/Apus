@@ -7,6 +7,7 @@
 #include <iostream>
 
 #include "lm/lm.h"
+#include "Types.h"
 
 
 namespace ApusCore {
@@ -38,5 +39,7 @@ namespace ApusCore {
 		}
 
 		void Generate(unsigned char* (*func)(lm::vec2 pos, lm::vec2 uv));
+
+		void Save(const char* path, ImageType imgType);
 	};
 }
