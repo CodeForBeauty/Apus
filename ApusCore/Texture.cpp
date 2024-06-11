@@ -57,7 +57,7 @@ void ApusCore::Texture::LoadTexture(const char* texturePath) {
 	Unbind();
 }
 
-void ApusCore::Texture::Generate(unsigned char*(*func)(lm::vec2 pos, lm::vec2 uv)) {
+void ApusCore::Texture::Generate(std::function<unsigned char* (lm::vec2 pos, lm::vec2 uv)> func) {
 	Clear();
 
 	data = new unsigned char[width * height * 3];

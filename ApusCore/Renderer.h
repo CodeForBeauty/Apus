@@ -17,7 +17,7 @@ namespace ApusCore {
 		Window* window;
 	public:
 		lm::vec4 background = { 0, 0, 0, 1 };
-		std::vector<Mesh*> sprites;
+		std::vector<Empty*> sprites;
 
 		Renderer(Window* window) : window(window) {
 			if (!glfwInit())

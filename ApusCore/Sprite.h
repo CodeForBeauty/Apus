@@ -1,6 +1,7 @@
 #pragma once
 #include <typeindex>
 #include <vector>
+#include <functional>
 
 #include <lm/lm.h>
 
@@ -10,7 +11,13 @@
 
 
 namespace ApusCore {
-	class Mesh {
+	class Empty {
+	public:
+		virtual void Draw(lm::mat4 proj, lm::mat4 cam) {};
+		virtual void Destroy() {};
+	};
+
+	class Mesh : public Empty {
 	protected:
 		std::vector<Vertex> vertices;
 		unsigned int vbo, vao;
@@ -19,8 +26,8 @@ namespace ApusCore {
 
 		Mesh(size_t vertCount);
 
-		void Destroy();
-		void Draw(lm::mat4 proj, lm::mat4 cam);
+		void Destroy() override;
+		void Draw(lm::mat4 proj, lm::mat4 cam) override;
 		Vertex* GetData();
 	};
 
@@ -59,6 +66,6 @@ namespace ApusCore {
 
 		void LoadTexture(const char* path);
 
-		void GenerateTexture(unsigned char* (*func)(lm::vec2 pos, lm::vec2 uv), int width, int height);
+		void GenerateTexture(std::function<unsigned char*(lm::vec2 pos, lm::vec2 uv)> func, int width, int height);
 	};
 }
