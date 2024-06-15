@@ -210,6 +210,7 @@
     <None Include="shaders\postprocessing.frag" />
     <None Include="shaders\postprocessing.vert" />
     <None Include="shaders\vertex.vert" />
+    <None Include="shaders\vertexNoScaling.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

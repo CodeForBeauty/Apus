@@ -29,6 +29,8 @@ void ApusCore::Mesh::Destroy() {
 }
 
 void ApusCore::Mesh::Draw(lm::mat4 proj, lm::mat4 cam) {
+	BeforeDraw();
+
 	material.Bind();
 
 	glUniformMatrix4fv(5, 1, GL_FALSE, proj);
@@ -49,15 +51,13 @@ Vertex* ApusCore::Mesh::GetData() {
 
 ApusCore::Sprite::Sprite(lm::vec4 tint, lm::vec2 scale, lm::vec2 position, float rotation, lm::vec2 tiling, const char* texPath) : 
 	Mesh(6), tintColor(tint), scale(scale), position(position), rotation(rotation), tiling(tiling), z(0) {
-	vertBase.push_back({ {-0.5f,  0.5f, 0.0f}, {0, 1}, {1, 1, 1, 1} });
-	vertBase.push_back({ { 0.5f,  0.5f, 0.0f}, {1, 1}, {1, 1, 1, 1} });
-	vertBase.push_back({ { 0.5f, -0.5f, 0.0f}, {1, 0}, {0, 0, 0, 1} });
+	vertices.push_back({ {-0.5f,  0.5f, 0.0f}, {0, 1}, {1, 1, 1, 1} });
+	vertices.push_back({ { 0.5f,  0.5f, 0.0f}, {1, 1}, {1, 1, 1, 1} });
+	vertices.push_back({ { 0.5f, -0.5f, 0.0f}, {1, 0}, {0, 0, 0, 1} });
 
-	vertBase.push_back({ { 0.5f, -0.5f, 0.0f}, {1, 0}, {0, 0, 0, 1} });
-	vertBase.push_back({ {-0.5f, -0.5f, 0.0f}, {0, 0}, {0, 0, 0, 1} });
-	vertBase.push_back({ {-0.5f,  0.5f, 0.0f}, {0, 1}, {1, 1, 1, 1} });
-
-	vertices = vertBase;
+	vertices.push_back({ { 0.5f, -0.5f, 0.0f}, {1, 0}, {0, 0, 0, 1} });
+	vertices.push_back({ {-0.5f, -0.5f, 0.0f}, {0, 0}, {0, 0, 0, 1} });
+	vertices.push_back({ {-0.5f,  0.5f, 0.0f}, {0, 1}, {1, 1, 1, 1} });
 	
 	for (int i = 0; i < vertices.size(); i++) {
 		vertices.at(i).pos *= scale;
@@ -147,4 +147,18 @@ void ApusCore::Sprite::GenerateTexture(std::function<unsigned char* (lm::vec2 po
 	material.tex.Generate(func);
 }
 
+ApusCore::ScreenOverlay::ScreenOverlay(Window* window) : Mesh(6), window(window) {
+	vertices.push_back({ {-1.0f,  1.0f, 0.0f}, {0, 1}, {1, 1, 1, 1} });
+	vertices.push_back({ { 1.0f,  1.0f, 0.0f}, {1, 1}, {1, 1, 1, 1} });
+	vertices.push_back({ { 1.0f, -1.0f, 0.0f}, {1, 0}, {0, 0, 0, 1} });
+
+	vertices.push_back({ { 1.0f, -1.0f, 0.0f}, {1, 0}, {0, 0, 0, 1} });
+	vertices.push_back({ {-1.0f, -1.0f, 0.0f}, {0, 0}, {0, 0, 0, 1} });
+	vertices.push_back({ {-1.0f,  1.0f, 0.0f}, {0, 1}, {1, 1, 1, 1} });
+
+	lastHeight = 1;
+	lastWidth = 1;
+
+	material = Material("shaders/vertexNoScaling.vert");
+}
 

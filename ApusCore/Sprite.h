@@ -8,6 +8,7 @@
 
 #include "Vertex.h"
 #include "Material.h"
+#include "Window.h"
 
 
 namespace ApusCore {
@@ -26,15 +27,15 @@ namespace ApusCore {
 
 		Mesh(size_t vertCount);
 
-		void Destroy() override;
-		void Draw(lm::mat4 proj, lm::mat4 cam) override;
+		virtual void BeforeDraw() { };
+
+		virtual void Destroy() override;
+		virtual void Draw(lm::mat4 proj, lm::mat4 cam) override;
 		Vertex* GetData();
 	};
 
 	class Sprite : public Mesh {
 	protected:
-		std::vector<Vertex> vertBase;
-		
 		lm::vec4 tintColor;
 		lm::vec2 tiling;
 
@@ -67,5 +68,17 @@ namespace ApusCore {
 		void LoadTexture(const char* path);
 
 		void GenerateTexture(std::function<unsigned char*(lm::vec2 pos, lm::vec2 uv)> func, int width, int height);
+	};
+
+	class ScreenOverlay : public Mesh {
+	protected:
+		Window* window;
+		int lastWidth, lastHeight;
+
+	public:
+
+		ScreenOverlay(Window* window);
+
+		void Regenerate(bool resize);
 	};
 }

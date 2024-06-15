@@ -102,5 +102,8 @@
     <None Include="shaders\postprocessing.vert">
       <Filter>Resource Files\shaders</Filter>
     </None>
+    <None Include="shaders\vertexNoScaling.vert">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

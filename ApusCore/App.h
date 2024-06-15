@@ -26,6 +26,6 @@ namespace ApusCore {
 		virtual void LateTick();
 		virtual void End();
 
-		void AddSprite(Sprite* newSprite);
+		void AddObject(Empty* newObject);
 	};
 }

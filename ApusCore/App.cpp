@@ -9,6 +9,8 @@ void ApusCore::App::Init() {
 
 	time = glfwGetTime();
 
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	while (!window.ShouldClose()) {
 		lastTime = time;
 		time = glfwGetTime();
@@ -44,6 +46,6 @@ void ApusCore::App::End() {
 	std::cout << "App closed" << std::endl;
 }
 
-void ApusCore::App::AddSprite(Sprite* newSprite) {
-	renderer.sprites.push_back(newSprite);
+void ApusCore::App::AddObject(Empty* newObject) {
+	renderer.sprites.push_back(newObject);
 }
