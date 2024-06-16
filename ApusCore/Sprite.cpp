@@ -22,6 +22,10 @@ ApusCore::Mesh::Mesh(size_t vertCount) {
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
+void ApusCore::Mesh::LoadTexture(const char* path) {
+	material.LoadTexture(path);
+}
+
 void ApusCore::Mesh::Destroy() {
 	material.Destroy();
 	glDeleteVertexArrays(1, &vao);
@@ -137,14 +141,15 @@ float ApusCore::Sprite::GetZ() {
 	return z;
 }
 
-void ApusCore::Sprite::LoadTexture(const char* path) {
-	material.LoadTexture(path);
-}
 
 void ApusCore::Sprite::GenerateTexture(std::function<Color (lm::vec2 pos, lm::vec2 uv)> func, int width, int height, bool hasAlpha) {
 	material.tex.width = width;
 	material.tex.height = height;
 	material.tex.Generate(func, hasAlpha);
+}
+
+void ApusCore::Sprite::RegenerateTexture(std::function<Color(lm::vec2 pos, lm::vec2 uv, Color previous)> func) {
+	material.tex.Regenerate(func);
 }
 
 ApusCore::ScreenOverlay::ScreenOverlay(Window* window) : Mesh(6), window(window) {
@@ -160,5 +165,22 @@ ApusCore::ScreenOverlay::ScreenOverlay(Window* window) : Mesh(6), window(window)
 	lastWidth = 1;
 
 	material = Material("shaders/vertexNoScaling.vert");
+}
+
+void ApusCore::ScreenOverlay::GenerateTexture(std::function<Color(lm::vec2 pos, lm::vec2 uv)> func, bool hasAlpha) {
+	material.tex.width = window->viewportWidth;
+	material.tex.height = window->viewportHeight;
+	std::cout << window->viewportWidth << " " << window->viewportHeight;
+	material.tex.Generate(func, hasAlpha);
+}
+
+void ApusCore::ScreenOverlay::GenerateTexture(std::function<Color(lm::vec2 pos, lm::vec2 uv)> func, int width, int height, bool hasAlpha) {
+	material.tex.width = width;
+	material.tex.height = height;
+	material.tex.Generate(func, hasAlpha);
+}
+
+void ApusCore::ScreenOverlay::RegenerateTexture(std::function<Color(lm::vec2 pos, lm::vec2 uv, Color previous)> func) {
+	material.tex.Regenerate(func);
 }
 

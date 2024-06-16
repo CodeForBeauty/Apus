@@ -16,6 +16,8 @@ namespace ApusCore {
 	private:
 		std::string path;
 		unsigned int id;
+	protected:
+		void UpdateData();
 	public:
 		unsigned char* data;
 		int width, height, channels;
@@ -40,6 +42,8 @@ namespace ApusCore {
 		}
 
 		void Generate(std::function<Color (lm::vec2 pos, lm::vec2 uv)> func, bool hasAlpha);
+
+		void Regenerate(std::function<Color(lm::vec2 pos, lm::vec2 uv, Color previous)> func);
 
 		void Save(const char* path, ImageType imgType);
 	};

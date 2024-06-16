@@ -26,6 +26,8 @@ namespace ApusCore {
 
 		Mesh(size_t vertCount);
 
+		void LoadTexture(const char* path);
+
 		virtual void BeforeDraw() { };
 
 		virtual void Destroy() override;
@@ -64,9 +66,8 @@ namespace ApusCore {
 		float GetZ();
 
 
-		void LoadTexture(const char* path);
-
 		void GenerateTexture(std::function<Color (lm::vec2 pos, lm::vec2 uv)> func, int width, int height, bool hasAlpha);
+		void RegenerateTexture(std::function<Color (lm::vec2 pos, lm::vec2 uv, Color previous)> func);
 	};
 
 	class ScreenOverlay : public Mesh {
@@ -78,6 +79,8 @@ namespace ApusCore {
 
 		ScreenOverlay(Window* window);
 
-		void Regenerate(bool resize);
+		void GenerateTexture(std::function<Color(lm::vec2 pos, lm::vec2 uv)> func, bool hasAlpha);
+		void GenerateTexture(std::function<Color(lm::vec2 pos, lm::vec2 uv)> func, int width, int height, bool hasAlpha);
+		void RegenerateTexture(std::function<Color(lm::vec2 pos, lm::vec2 uv, Color previous)> func);
 	};
 }

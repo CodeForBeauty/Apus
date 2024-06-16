@@ -22,11 +22,11 @@ public:
 		};*/
 		// r\left(x, y\right) = .2 + .8\operatorname{ abs }\left(f\left(\frac{ \arctan\left(y,x\right) }{2\pi} - .15\sqrt{ x^ {2} + y^ {2} } + t\right)\right)
 		auto test = [](lm::vec2 pos, lm::vec2 uv) {
-			ApusCore::Color output = { (std::abs(uv.x * 2 - 1.0f)) * (std::abs(uv.y * 2 - 1.0f)) };
+			ApusCore::Color output = { uv.x, uv.y, 0, 1 };//{ (std::abs(uv.x * 2 - 1.0f)) * (std::abs(uv.y * 2 - 1.0f)) };
 			return output;
 		};
 
-		sp1.GenerateTexture(test, 1024, 812, false);
+		//sp1.GenerateTexture(test, 1024, 812, false);
 
 		sp1.material.tex.Save("testing/texture1.png", ApusCore::ImageType::png);
 
@@ -35,18 +35,21 @@ public:
 		//sp1.SetRotation(-25);
 		//sp1.SetPosition({ 0.1, 0 });
 
-		sp2.material.tex.LoadTexture("testing/Red-Ball-Transparent.png");
+		//sp2.material.tex.LoadTexture("testing/Red-Ball-Transparent.png");
+		//sp2.material.tex.LoadTexture("testing/grass.jpg");
+		sp2.GenerateTexture(test, true);
+		//sp2.material.tex.LoadTexture("testing/SizeTesting.jpg");
 
 		AddObject(&sp);
 		AddObject(&sp1);
-		//AddObject(&sp2);
+		AddObject(&sp2);
 
 		ApusCore::Color a = {1, 1, 1, 0};
 		ApusCore::Color b = {2, 1, 0.5f, 0.5f};
 		std::cout << a * b << std::endl;
 
-		window.ResizeViewport(800, 650);
 		//std::cout << std::hex << glGetError() << std::endl;
+		window.ResizeViewport(850, 600);
 	}
 
 	void Tick() override {
