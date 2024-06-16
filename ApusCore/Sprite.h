@@ -1,5 +1,4 @@
 #pragma once
-#include <typeindex>
 #include <vector>
 #include <functional>
 
@@ -67,7 +66,7 @@ namespace ApusCore {
 
 		void LoadTexture(const char* path);
 
-		void GenerateTexture(std::function<unsigned char*(lm::vec2 pos, lm::vec2 uv)> func, int width, int height);
+		void GenerateTexture(std::function<Color (lm::vec2 pos, lm::vec2 uv)> func, int width, int height, bool hasAlpha);
 	};
 
 	class ScreenOverlay : public Mesh {

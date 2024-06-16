@@ -2,7 +2,8 @@
 #include <App.h>
 #include <Sprite.h>
 
-#include <math.h>
+#include <cmath>
+
 
 
 
@@ -21,13 +22,11 @@ public:
 		};*/
 		// r\left(x, y\right) = .2 + .8\operatorname{ abs }\left(f\left(\frac{ \arctan\left(y,x\right) }{2\pi} - .15\sqrt{ x^ {2} + y^ {2} } + t\right)\right)
 		auto test = [](lm::vec2 pos, lm::vec2 uv) {
-			unsigned char val1 = (unsigned char)((std::abs(uv.x * 2 - 1.0f)) * (std::abs(uv.y * 2 - 1.0f)) * 255);
-			unsigned char val2 = (unsigned char)((1 - std::abs(uv.y * 2 - 1.0f)) * 255);
-			unsigned char output[3]{ val1 * 0.5f, val1 * 0.7f, val1 * 1.0f };
+			ApusCore::Color output = { (std::abs(uv.x * 2 - 1.0f)) * (std::abs(uv.y * 2 - 1.0f)) };
 			return output;
-			};
+		};
 
-		sp1.GenerateTexture(test, 1024, 812);
+		sp1.GenerateTexture(test, 1024, 812, false);
 
 		sp1.material.tex.Save("testing/texture1.png", ApusCore::ImageType::png);
 
@@ -40,8 +39,11 @@ public:
 
 		AddObject(&sp);
 		AddObject(&sp1);
-		AddObject(&sp2);
+		//AddObject(&sp2);
 
+		ApusCore::Color a = {1, 1, 1, 0};
+		ApusCore::Color b = {2, 1, 0.5f, 0.5f};
+		std::cout << a * b << std::endl;
 
 		window.ResizeViewport(800, 650);
 		//std::cout << std::hex << glGetError() << std::endl;

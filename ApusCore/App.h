@@ -1,7 +1,6 @@
 #pragma once
 #include "Window.h"
 #include "Renderer.h"
-#include "Sprite.h"
 #include "Camera.h"
 
 namespace ApusCore {

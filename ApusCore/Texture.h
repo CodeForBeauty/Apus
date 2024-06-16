@@ -21,7 +21,7 @@ namespace ApusCore {
 		int width, height, channels;
 
 		Texture(const char* path);
-		Texture(unsigned char* (*func)(lm::vec2 pos, lm::vec2 uv), int width, int height);
+		Texture(std::function<Color(lm::vec2 pos, lm::vec2 uv)> func, int width, int height, bool hasAlpha);
 
 		void LoadTexture(const char* texturePath);
 
@@ -39,7 +39,7 @@ namespace ApusCore {
 			glBindTexture(GL_TEXTURE_2D, 0);
 		}
 
-		void Generate(std::function<unsigned char* (lm::vec2 pos, lm::vec2 uv)> func);
+		void Generate(std::function<Color (lm::vec2 pos, lm::vec2 uv)> func, bool hasAlpha);
 
 		void Save(const char* path, ImageType imgType);
 	};
