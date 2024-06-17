@@ -55,13 +55,7 @@ void ApusCore::Texture::Generate(std::function<Color (lm::vec2 pos, lm::vec2 uv)
 		for (int j = 0; j < height; j++) {
 			Color pixel = func({ (float)i, (float)j }, { (float)i / (float)width, (float)j / (float)height });
 
-			pixel = pixel * 255;
-			unsigned char* offset = data + (i + width * j) * channels;
-			offset[0] = (unsigned char)pixel.r;
-			offset[1] = (unsigned char)pixel.g;
-			offset[2] = (unsigned char)pixel.b;
-			if (hasAlpha)
-				offset[3] = (unsigned char)pixel.a;
+			SetPixel(i, j, pixel);
 		}
 	}
 
@@ -74,21 +68,18 @@ void ApusCore::Texture::Regenerate(std::function<Color(lm::vec2 pos, lm::vec2 uv
 	unsigned char* newData = new unsigned char[width * height * channels];
 	for (int i = 0; i < width; i++) {
 		for (int j = 0; j < height; j++) {
-			Color previous = { 
-				(float)data[(i + width * j) * channels + 0] / 255.0f,
-				(float)data[(i + width * j) * channels + 1] / 255.0f,
-				(float)data[(i + width * j) * channels + 2] / 255.0f
-			};
+			Color previous = GetPixel(i, j);
 			if (channels == 4)
 				previous.a = (float)data[(i + width * j) * channels + 3] / 255.0f;
 			Color pixel = func({ (float)i, (float)j }, { (float)i / width, (float)j / height }, previous);
 
 			pixel = pixel * 255;
-			newData[(i + width * j) * channels + 0] = (unsigned char)pixel.r;
-			newData[(i + width * j) * channels + 1] = (unsigned char)pixel.g;
-			newData[(i + width * j) * channels + 2] = (unsigned char)pixel.b;
-			if (channels == 4)
-				newData[(i + width * j) * channels + 3] = (unsigned char)pixel.a;
+			unsigned char* offset = newData + (i + width * j) * channels;
+			offset[0] = (unsigned char)pixel.r;
+			offset[1] = (unsigned char)pixel.g;
+			offset[2] = (unsigned char)pixel.b;
+			if (channels > 3)
+				offset[3] = (unsigned char)pixel.a;
 		}
 	}
 
@@ -112,4 +103,26 @@ void ApusCore::Texture::Save(const char* outputPath, ApusCore::ImageType imgType
 		stbi_write_tga(outputPath, width, height, 3, data);
 		break;
 	}
+}
+
+ApusCore::Color ApusCore::Texture::GetPixel(int x, int y) {
+	unsigned char* offset = data + (x + width * y) * channels;
+	Color output = {
+				(float)offset[0] / 255.0f,
+				(float)offset[1] / 255.0f,
+				(float)offset[2] / 255.0f
+	};
+	if (channels == 4)
+		output.a = (float)offset[3] / 255.0f;
+	return output;
+}
+
+void ApusCore::Texture::SetPixel(int x, int y, Color value) {
+	value = value * 255;
+	unsigned char* offset = data + (x + width * y) * channels;
+	offset[0] = (unsigned char)value.r;
+	offset[1] = (unsigned char)value.g;
+	offset[2] = (unsigned char)value.b;
+	if (channels > 3)
+		offset[3] = (unsigned char)value.a;
 }

@@ -46,5 +46,8 @@ namespace ApusCore {
 		void Regenerate(std::function<Color(lm::vec2 pos, lm::vec2 uv, Color previous)> func);
 
 		void Save(const char* path, ImageType imgType);
+
+		Color GetPixel(int x, int y);
+		void SetPixel(int x, int y, Color value);
 	};
 }
