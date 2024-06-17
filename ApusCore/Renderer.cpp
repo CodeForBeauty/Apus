@@ -16,7 +16,6 @@ void ApusCore::Renderer::Render(lm::mat4 proj, lm::mat4 cam) {
 
 	for (int i = 0; i < sprites.size(); i++) {
 		sprites[i]->Draw(proj, cam);
-		//sprites[i].Unbind();
 	}
 }
 

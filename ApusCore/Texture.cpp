@@ -26,12 +26,6 @@ void ApusCore::Texture::UpdateData() {
 ApusCore::Texture::Texture(const char* path) : path(path) {
 	data = stbi_load(path, &width, &height, &channels, 0);
 
-	/*for (int i = 0; i < 10; i++) {
-		for (int j = 0; j < 10; j++) {
-			std::cout << (float)data[(i + width * j) * channels] << " " << (float)data[(i + width * j) * channels + 1] << " " << (float)data[(i + width * j) * channels + 2] << " " << std::endl;
-		}
-	}*/
-
 	glGenTextures(1, &id);
 	UpdateData();
 }
@@ -43,10 +37,8 @@ ApusCore::Texture::Texture(std::function<Color(lm::vec2 pos, lm::vec2 uv)> func,
 }
 
 void ApusCore::Texture::LoadTexture(const char* texturePath) {
-	//std::cout << texturePath << std::endl;
 	if (strcmp(path.c_str(), texturePath) == 0)
 		return;
-	//std::cout << texturePath << "1" << std::endl;
 	Clear();
 	path = texturePath;
 	data = stbi_load(texturePath, &width, &height, &channels, 0);
@@ -63,7 +55,6 @@ void ApusCore::Texture::Generate(std::function<Color (lm::vec2 pos, lm::vec2 uv)
 		for (int j = 0; j < height; j++) {
 			Color pixel = func({ (float)i, (float)j }, { (float)i / (float)width, (float)j / (float)height });
 
-			//pixel = { 1, 1, 1, 0.5f };
 			pixel = pixel * 255;
 			unsigned char* offset = data + (i + width * j) * channels;
 			offset[0] = (unsigned char)pixel.r;

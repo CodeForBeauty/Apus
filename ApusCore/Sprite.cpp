@@ -39,7 +39,6 @@ void ApusCore::Mesh::Draw(lm::mat4 proj, lm::mat4 cam) {
 
 	glUniformMatrix4fv(5, 1, GL_FALSE, proj);
 	glUniformMatrix4fv(6, 1, GL_FALSE, cam);
-	//std::cout << std::hex << glGetError() << std::endl;
 
 	glBindVertexArray(vao);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);

@@ -4,7 +4,6 @@
 #include "Shader.h"
 
 
-
 void ApusCore::Shader::Destroy() {
 	glDeleteShader(id);
 }

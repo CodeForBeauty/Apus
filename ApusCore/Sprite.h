@@ -4,7 +4,6 @@
 
 #include <lm/lm.h>
 
-
 #include "Vertex.h"
 #include "Material.h"
 #include "Window.h"

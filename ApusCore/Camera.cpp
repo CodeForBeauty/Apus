@@ -7,10 +7,6 @@ void ApusCore::Camera::UpdateMatrix() {
 	lm::mat4 rot = lm::rotation2d(rotation);
 	rot.w.z = 1;
 	rot.w.w = 1;
-
-	/*matrix.w.x = 1;
-	matrix.w.y = 1;
-	matrix.w.z = 1;*/
 	
 	matrix = rot * lm::position3d(-position);
 }
@@ -22,7 +18,6 @@ ApusCore::Camera::Camera(lm::vec2 position, float rotation) : position(position)
 	glBindFramebuffer(GL_FRAMEBUFFER, posFBO);
 	
 	GenerateTexture(800, 650);
-	//glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 	program = glCreateProgram();
 	glAttachShader(program, vs.id);
