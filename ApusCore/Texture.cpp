@@ -51,6 +51,7 @@ void ApusCore::Texture::Generate(std::function<Color (lm::vec2 pos, lm::vec2 uv)
 	Clear();
 	channels = hasAlpha ? 4 : 3;
 	data = new unsigned char[width * height * channels];
+#pragma omp parallel for
 	for (int i = 0; i < width; i++) {
 		for (int j = 0; j < height; j++) {
 			Color pixel = func({ (float)i, (float)j }, { (float)i / (float)width, (float)j / (float)height });
@@ -66,6 +67,7 @@ void ApusCore::Texture::Regenerate(std::function<Color(lm::vec2 pos, lm::vec2 uv
 	if (channels < 3 || width == 0 || height == 0)
 		return;
 	unsigned char* newData = new unsigned char[width * height * channels];
+#pragma omp parallel for
 	for (int i = 0; i < width; i++) {
 		for (int j = 0; j < height; j++) {
 			Color previous = GetPixel(i, j);
