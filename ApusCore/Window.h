@@ -36,6 +36,10 @@ namespace ApusCore {
 		void SetFullscreen(bool newVal);
 		bool ToggleFullscreen();
 
+		void ResizeWindow(int newWidth, int newHeight);
+		void SetAspectRatio(int value, int denominator);
+
+
 		int ShouldClose();
 		void Update();
 		lm::mat4 GetProjection();

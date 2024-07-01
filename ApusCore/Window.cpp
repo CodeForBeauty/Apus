@@ -60,6 +60,14 @@ bool ApusCore::Window::ToggleFullscreen() {
 	return isFullScreen;
 }
 
+void ApusCore::Window::ResizeWindow(int newWidth, int newHeight) {
+	glfwSetWindowSize(window, newWidth, newHeight);
+}
+
+void ApusCore::Window::SetAspectRatio(int value, int denominator) {
+	glfwSetWindowAspectRatio(window, value, denominator);
+}
+
 int ApusCore::Window::ShouldClose() {
 	return glfwWindowShouldClose(window);
 }
